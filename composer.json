@@ -1,0 +1,20 @@
+{
+  "name": "vendasta/accounts",
+  "description": "Vendasta accounts library for PHP",
+  "type": "library",
+  "require": {
+    "grpc/grpc": "^v1.1.0",
+    "guzzlehttp/guzzle": "^6.3",
+    "mdanter/ecc": "^0.5.0",
+    "vendasta/vax": "^1.2.0",
+    "google/protobuf": "^3.9.2",
+    "google/common-protos": "^1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Vendasta\\Accounts\\V1\\": "./src",
+      "Accounts\\V1\\": "generated/grpc/Accounts/V1/",
+      "GPBMetadata\\Accounts\\V1\\": "generated/grpc/GPBMetadata/Accounts/V1/"
+    }
+  }
+}
