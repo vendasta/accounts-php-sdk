@@ -4,12 +4,15 @@ use PHPUnit\Framework\TestCase;
 use Accounts\V1\DeactivationType;
 use Vendasta\Accounts\V1\AccountsServiceClient;
 use Vendasta\Accounts\V1\DeactivateAppRequest;
-use Vendasta\Vax\SDKException;
 
 class AccountServiceClientTest extends TestCase
 {
     public function testDeactivateApp()
     {
+        $businessId = "";
+        $appId = "";
+        $activationId = "";
+
         $environment = getenv("ENVIRONMENT");
         if ($environment == null) {
             $environment = "DEMO";
@@ -17,11 +20,17 @@ class AccountServiceClientTest extends TestCase
         $client = new AccountsServiceClient($environment);
 
         $req = new DeactivateAppRequest();
-        $req->setBusinessId("AG-P3KH8VTHR5");
-        $req->setAppId("MP-MCLBF8TMSMLCQ5W72LNHQV5XVW4KC2MX");
-        $req->setActivationId("ea6f6da0-ad68-49d6-8439-8a693fdaea20");
+        $req->setBusinessId($businessId);
+        $req->setAppId($appId);
+        $req->setActivationId($activationId);
         $req->setDeactivationType(DeactivationType::DEACTIVATION_TYPE_CANCEL);
 
         $resp = $client->DeactivateApp($req);
+
+        self::assertEquals(
+            new Google\Protobuf\GPBEmpty(),
+            $resp,
+            'expected response to be GPBEmpty()',
+        );
     }
 }
