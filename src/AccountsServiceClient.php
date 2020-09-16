@@ -27,4 +27,9 @@ class AccountsServiceClient
         $deactivateRequest = $req->toDeactivateAppRequest();
         return $this->client->DeactivateApp($deactivateRequest);
     }
+
+    public function List(ListRequest $req) {
+        $listRequest = $req->toListRequest();
+        return $this->client->List($listRequest);
+    }
 }

@@ -4,6 +4,7 @@ use PHPUnit\Framework\TestCase;
 use Accounts\V1\DeactivationType;
 use Vendasta\Accounts\V1\AccountsServiceClient;
 use Vendasta\Accounts\V1\DeactivateAppRequest;
+use Vendasta\Accounts\V1\ListRequest;
 
 class AccountServiceClientTest extends TestCase
 {
@@ -31,6 +32,30 @@ class AccountServiceClientTest extends TestCase
             new Google\Protobuf\GPBEmpty(),
             $resp,
             'expected response to be GPBEmpty()',
+        );
+    }
+
+    public function testList() {
+        $businessId = "";
+        $partnerId = "";
+
+        $environment = getenv("ENVIRONMENT");
+        if ($environment == null) {
+            $environment = "DEMO";
+        }
+        $client = new AccountsServiceClient($environment);
+
+        $req = new ListRequest();
+        $req->setPartnerId($partnerId);
+        $req->setBusinessId($businessId);
+
+        $resp = $client->List($req);
+        foreach($resp->getAccounts() as $value) {
+            echo $value->getActivationId(). "\n";
+        }
+        self::assertNotEmpty(
+            $resp->getAccounts(),
+            'expected products to be returned'
         );
     }
 }
