@@ -16,5 +16,8 @@
       "Accounts\\V1\\": "generated/grpc/Accounts/V1/",
       "GPBMetadata\\Accounts\\V1\\": "generated/grpc/GPBMetadata/Accounts/V1/"
     }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7"
   }
 }
