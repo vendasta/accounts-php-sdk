@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Vendasta\Accounts\V1;
 
 use Vendasta\Accounts\V1\internal\AccountsServiceGeneratedClient;
@@ -21,5 +21,10 @@ class AccountsServiceClient
     public function ActivateApp(ActivateAppRequest $req) {
         $activateRequest = $req->toActivateAppRequest();
         return $this->client->ActivateApp($activateRequest);
+    }
+
+    public function DeactivateApp(DeactivateAppRequest $req) {
+        $deactivateRequest = $req->toDeactivateAppRequest();
+        return $this->client->DeactivateApp($deactivateRequest);
     }
 }
