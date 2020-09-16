@@ -1,4 +1,10 @@
+<?php
 
+use PHPUnit\Framework\TestCase;
+use Accounts\V1\DeactivationType;
+use Vendasta\Accounts\V1\AccountsServiceClient;
+use Vendasta\Accounts\V1\DeactivateAppRequest;
+use Vendasta\Vax\SDKException;
 
 class AccountServiceClientTest extends TestCase
 {
@@ -11,15 +17,11 @@ class AccountServiceClientTest extends TestCase
         $client = new AccountsServiceClient($environment);
 
         $req = new DeactivateAppRequest();
-        $req->setBusinessId("AG-PJD3JFTKBB");
-        $req->setAppId("MP-94072e44d5364872b672d7ab4fc7a7e8");
-        $req->setActivationId("a2d8875f-623d-47f4-87b2-a1fdc700a000");
+        $req->setBusinessId("AG-P3KH8VTHR5");
+        $req->setAppId("MP-MCLBF8TMSMLCQ5W72LNHQV5XVW4KC2MX");
+        $req->setActivationId("ea6f6da0-ad68-49d6-8439-8a693fdaea20");
         $req->setDeactivationType(DeactivationType::DEACTIVATION_TYPE_CANCEL);
 
-         try {
-            $resp = $client->DeactivateApp($req);
-        } catch (Vendasta\Vax\SDKException $e) {
-            self::fail('unexpected error');
-            return;
-        }
+        $resp = $client->DeactivateApp($req);
     }
+}

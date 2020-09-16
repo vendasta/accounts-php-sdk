@@ -9,31 +9,31 @@ class DeactivateAppRequest {
     private $activationId;
 
 
-    public function setBusinessId(string $var){
+    public function setBusinessId($var){
         $this->businessId = $var;
     }
 
-    public function getBusinessId(): string {
+    public function getBusinessId() {
         return $this->businessId;
     }
 
-    public function setAppId(string $var){
+    public function setAppId($var){
         $this->appId = $var;
     }
 
-    public function getAppId(): string {
+    public function getAppId() {
         return $this->appId;
     }
 
-    public function setDeactivationInfo(&$var) {
+    public function setDeactivationInfo($var) {
         $this->deactivationInfo = $var;
     }
 
-    public function getDeactivationInfo() {
+    public function &getDeactivationInfo() {
         return $this->deactivationInfo;
     }
 
-    public function setDeactivationType(&$var) {
+    public function setDeactivationType($var) {
         $this->deactivationType = $var;
     }
 
@@ -41,15 +41,15 @@ class DeactivateAppRequest {
         return $this->deactivationType;
     }
 
-    public function setActivationId(string $var) {
+    public function setActivationId($var) {
         $this->activationId = $var;
     }
 
-    public function getActivationId(): string {
+    public function getActivationId() {
         return $this->activationId;
     }
 
-    public function toActivateAppRequest(): \Accounts\V1\DeactivateAppRequest
+    public function toDeactivateAppRequest()
     {
         $deactivateReq = new \Accounts\V1\DeactivateAppRequest();
         $deactivateReq->setAppId($this->getAppId());
